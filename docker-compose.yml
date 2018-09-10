@@ -27,7 +27,11 @@ services:
     image: docker.bintray.io/jfrog/artifactory-oss:5.4.4
     ports:
      - "8081"
-
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 90000
+        hard: 90000
 secrets:
   artifactoryPassword:
     file: ./secrets/artifactoryPassword
